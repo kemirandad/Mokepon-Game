@@ -9,13 +9,13 @@ function estaSeleccionadaMascota(nombreMascota) {
 
 function seleccionarMascotaJugador(){
     if (estaSeleccionadaMascota('hipodoge')) {
-        return alert("Seleccionaste a Hipodoge")
+        alert("Seleccionaste a Hipodoge")
     } else if (estaSeleccionadaMascota('capipepo')){
-        return alert("Seleccionaste a Capipepo")
+        alert("Seleccionaste a Capipepo")
     } else if (estaSeleccionadaMascota('ratigueya')){
-        return alert("Seleccionaste a Ratigueya")
+        alert("Seleccionaste a Ratigueya")
     } else {
-        return alert("No has seleccionado a ninguna mascota")
+        alert("No has seleccionado una mascota")
     }
 }
 
