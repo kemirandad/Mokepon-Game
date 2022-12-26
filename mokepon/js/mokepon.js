@@ -8,12 +8,18 @@ function estaSeleccionadaMascota(nombreMascota) {
 }
 
 function seleccionarMascotaJugador(){
+
+    let spanMascotaJugador = document.getElementById('mascota-jugador')
+
     if (estaSeleccionadaMascota('hipodoge')) {
-        alert("Seleccionaste a Hipodoge")
+        spanMascotaJugador.innerHTML = 'Hipodoge'
+        //alert("Seleccionaste a Hipodoge")
     } else if (estaSeleccionadaMascota('capipepo')){
-        alert("Seleccionaste a Capipepo")
+        spanMascotaJugador.innerHTML = 'Capipepo'
+        //alert("Seleccionaste a Capipepo")
     } else if (estaSeleccionadaMascota('ratigueya')){
-        alert("Seleccionaste a Ratigueya")
+        spanMascotaJugador.innerHTML = 'Ratigueya'
+        //alert("Seleccionaste a Ratigueya")
     } else {
         alert("No has seleccionado una mascota")
     }
