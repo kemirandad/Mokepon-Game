@@ -75,7 +75,6 @@ function ataqueTierra() {
 
 function ataqueAleatorioEnemigo() {
     let ataqueAleatorio = aleatorio(1,3)
-    //let spanAtaqueEnemigo = document.getElementById('ataque-enemigo')
 
     if (ataqueAleatorio == 1) {
         ataqueEnemigo = 'FUEGO'
@@ -86,7 +85,6 @@ function ataqueAleatorioEnemigo() {
     }
 
     crearMensaje()
-    //spanAtaqueEnemigo.innerHTML = ataqueEnemigo
 }
 
 function ataqueMascotaJugador() {
@@ -98,7 +96,6 @@ function ataqueMascotaJugador() {
 }
 
 function combate() {
-    //let spanResultadoAtaque = document.getElementById('resultado-ataque')
 
     let resultadoAtaque 
 
