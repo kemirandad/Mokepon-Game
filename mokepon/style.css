@@ -11,3 +11,16 @@
     justify-content: center;
     align-items: center;
 }
+
+.tarjeta-de-mokepon{
+    width: 100px;
+    height: 100px;
+    background-color: aquamarine;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid hotpink;
+}
+
+.input-mascota{
+    border: 5px solid red;
+}
