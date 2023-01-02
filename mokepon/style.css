@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Poppins:wght@300&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #3D5656;
+}
+
 .titulo {
-    color: hotpink;
-    width: 300px;
-    height: 50px;
-    background-color: teal;
+    font-family: 'Fredoka', sans-serif;
+    color: white;
 }
 
 #seleccionar-mascota {
@@ -12,15 +17,39 @@
     align-items: center;
 }
 
-.tarjeta-de-mokepon{
-    width: 100px;
-    height: 100px;
-    background-color: aquamarine;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid hotpink;
+.subtitulo{
+    font-size: 20px;
+    color: white;
 }
 
-.input-mascota{
-    border: 5px solid red;
+
+.tarjeta-de-mokepon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 180px;
+    height: 100px;
+    background-color: #FED049;
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.tarjeta-de-mokepon img {
+    width: 80px;
+}
+
+#boton-mascota{
+    width: 180px;
+    height: 40px;
+    border-radius: 20px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.tarjetas{
+    display: flex;
 }
