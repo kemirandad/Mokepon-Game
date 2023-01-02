@@ -45,17 +45,17 @@ function seleccionarMascotaJugador() {
         spanMascotaJugador.innerHTML = 'Hipodoge'
         
         sectionSeleccionarMascotaJugador.style.display = 'none'
-        sectionSeleccionarAtaque.style.display = 'block'
+        sectionSeleccionarAtaque.style.display = 'flex'
     } else if (estaSeleccionadaMascota('capipepo')) {
         spanMascotaJugador.innerHTML = 'Capipepo'
 
         sectionSeleccionarMascotaJugador.style.display = 'none'
-        sectionSeleccionarAtaque.style.display = 'block'
+        sectionSeleccionarAtaque.style.display = 'flex'
     } else if (estaSeleccionadaMascota('ratigueya')) {
         spanMascotaJugador.innerHTML = 'Ratigueya'
 
         sectionSeleccionarMascotaJugador.style.display = 'none'
-        sectionSeleccionarAtaque.style.display = 'block'
+        sectionSeleccionarAtaque.style.display = 'flex'
     } else {
         alert("No has seleccionado una mascota")
     }
@@ -157,7 +157,7 @@ function crearMensaje(resultado) {
 function crearMensajeFinal(resultadoFinal) {
 
     let sectionReiniciar = document.getElementById('reiniciar')
-    sectionReiniciar.style.display = 'block'
+    sectionReiniciar.style.display = 'flex'
 
     let sectionMensaje = document.getElementById('mensajes')
     let parrafo = document.createElement('p')

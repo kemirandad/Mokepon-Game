@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Poppins:wght@300&display=swap');
 
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 body{
     font-family: 'Poppins', sans-serif;
     background-color: #3D5656;
@@ -8,6 +13,8 @@ body{
 .titulo {
     font-family: 'Fredoka', sans-serif;
     color: white;
+    font-size: 50px;
+    margin-bottom: 20px;
 }
 
 #seleccionar-mascota {
@@ -60,4 +67,65 @@ body{
 
 input{
     display: none;
+}
+
+#seleccionar-ataque{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botones-ataques{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+}
+
+.botones-ataques button{
+    height: 80px;
+    width: 160px;
+    border-radius: 20px;
+    font-size: 20px;
+
+}
+
+#boton-fuego{
+    background: rgb(255,0,0);
+    background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(232,10,10,1) 13%, rgba(255,234,0,1) 100%);
+}
+
+#boton-agua{
+    background: rgb(0,28,255);
+    background: linear-gradient(90deg, rgba(0,28,255,1) 0%, rgba(96,123,230,1) 56%, rgba(250,250,250,1) 100%);
+}
+
+#boton-tierra{
+    background: rgb(0,118,32);
+    background: linear-gradient(90deg, rgba(0,118,32,1) 0%, rgba(28,232,99,1) 56%, rgba(250,250,250,1) 100%);
+}
+
+.mensajes-batalla{
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.mensajes-batalla p{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 200px;
+    width: 250px;
+    padding: 10px;
+    border: 2px solid red;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+span:first-child{
+    font-family: 'Fredoka', sans-serif;
+    color: aliceblue;
+    font-size: 50px;
 }
