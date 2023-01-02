@@ -35,10 +35,16 @@ body{
     padding: 10px;
     box-sizing: border-box;
     border-radius: 20px;
+    margin: 10px;
+
 }
 
 .tarjeta-de-mokepon img {
     width: 80px;
+}
+
+.tarjetas{
+    display: flex;
 }
 
 #boton-mascota{
@@ -48,8 +54,10 @@ body{
     background: transparent;
     border: 2px solid white;
     color: white;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 30px;
 }
 
-.tarjetas{
-    display: flex;
+input{
+    display: none;
 }

@@ -34,22 +34,28 @@ function estaSeleccionadaMascota(nombreMascota) {
 function seleccionarMascotaJugador() {
 
     let sectionSeleccionarMascotaJugador = document.getElementById('seleccionar-mascota')
-    sectionSeleccionarMascotaJugador.style.display = 'none'
+    //sectionSeleccionarMascotaJugador.style.display = 'none'
 
     let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
-    sectionSeleccionarAtaque.style.display = 'block'
+    //sectionSeleccionarAtaque.style.display = 'block'
 
     let spanMascotaJugador = document.getElementById('mascota-jugador')
 
     if (estaSeleccionadaMascota('hipodoge')) {
         spanMascotaJugador.innerHTML = 'Hipodoge'
-        //alert("Seleccionaste a Hipodoge")
+        
+        sectionSeleccionarMascotaJugador.style.display = 'none'
+        sectionSeleccionarAtaque.style.display = 'block'
     } else if (estaSeleccionadaMascota('capipepo')) {
         spanMascotaJugador.innerHTML = 'Capipepo'
-        //alert("Seleccionaste a Capipepo")
+
+        sectionSeleccionarMascotaJugador.style.display = 'none'
+        sectionSeleccionarAtaque.style.display = 'block'
     } else if (estaSeleccionadaMascota('ratigueya')) {
         spanMascotaJugador.innerHTML = 'Ratigueya'
-        //alert("Seleccionaste a Ratigueya")
+
+        sectionSeleccionarMascotaJugador.style.display = 'none'
+        sectionSeleccionarAtaque.style.display = 'block'
     } else {
         alert("No has seleccionado una mascota")
     }
@@ -143,9 +149,9 @@ function crearMensaje(resultado) {
     let mensajeBatalla = document.createElement('p')
     mensajeBatalla.innerHTML = 'Tu mascota atacó con ' + ataqueJugador + ', la mascota del enemigo atacó con ' + ataqueEnemigo + ' - ' + resultado + '! 🎉'
 
-    let mensajeActual = document.getElementById('mensajes')
+    //let mensajeActual = document.getElementById('mensajes')
 
-    document.body.insertBefore(mensajeBatalla, mensajeActual)
+    document.body.appendChild(mensajeBatalla)
 }
 
 function crearMensajeFinal(resultadoFinal) {
