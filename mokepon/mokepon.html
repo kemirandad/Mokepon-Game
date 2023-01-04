@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOKEPON!</title>
-    
+
     <script src="./js/mokepon.js"></script>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
 
     <section id="seleccionar-mascota">
@@ -22,61 +24,61 @@
                 <p>Hipodoge</p>
                 <img src="./assets/mokepons_mokepon_hipodoge_attack.png" alt="Hipodoge">
             </label>
-            <input class="input-mascota" type="radio" name="mascota" id="hipodoge"/>
-    
+            <input class="input-mascota" type="radio" name="mascota" id="hipodoge" />
+
             <label class="tarjeta-de-mokepon" for="capipepo">
                 <p>Capipepo</p>
                 <img src="./assets/mokepons_mokepon_capipepo_attack.png" alt="Capipepo">
             </label>
-            <input class="input-mascota" type="radio" name="mascota" id="capipepo"/>
-    
+            <input class="input-mascota" type="radio" name="mascota" id="capipepo" />
+
             <label class="tarjeta-de-mokepon" for="ratigueya">
                 <p>Ratigueya</p>
                 <img src="./assets/mokepons_mokepon_ratigueya_attack.png" alt="Ratigueya">
             </label>
-            <input class="input-mascota" type="radio" name="mascota" id="ratigueya"/>    
+            <input class="input-mascota" type="radio" name="mascota" id="ratigueya" />
         </div>
-        
+
         <button id="boton-mascota">Seleccionar</button>
     </section>
 
     <section id="seleccionar-ataque">
-        <h1 class="titulo">Mokepon! 🔥💧🪴</h1>
+        <h1 class="titulo">MOKEPON! 🔥💧🪴</h1>
         <h2>Elige tu ataque:</h2>
 
         <div class="botones-ataques">
             <button id="boton-fuego">
                 Fuego 🔥
-                </button>
+            </button>
             <button id="boton-agua">
                 Agua 💧
-                </button>
+            </button>
             <button id="boton-tierra">
                 Tierra 🪴</button>
         </div>
 
-        <div class="contenedor-resultado">
-            <section id="mensajes">
-            </section>
-        
+        <div id="mensajes">
+            <p id="resultado">Mucha suerte</p>
+
             <section id="reiniciar">
                 <button id="boton-reiniciar">Reiniciar 🌀</button>
             </section>
         </div>
 
         <div class="mensajes-batalla">
-            <p> 
-                <span id="vidas-jugador">3</span> 
+            <p id="ataques-del-jugador" class="combate">
+                <span id="vidas-jugador">3</span>
                 <span id="mascota-jugador"> </span>
+                <!-- <span id="ataques-del-jugador"></span> -->
             </p>
-            <p>
+            <p id="ataques-del-enemigo" class="combate">
                 <span id="vidas-enemigo">3</span>
                 <span id="mascota-enemigo"> </span>
+                <!-- <span id="ataques-del-enemigo"></span> -->
             </p>
-            <!-- <p>Tu mascota <span id="mascota-jugador"> </span> tiene <span id="vidas-jugador">3</span> vidas</p>
-            <p>La mascota <span id="mascota-enemigo"> </span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p> -->
         </div>
 
     </section>
 </body>
+
 </html>
