@@ -52,6 +52,7 @@ body{
 
 .tarjetas{
     display: flex;
+    gap: 10px;
 }
 
 #boton-mascota{
@@ -69,6 +70,10 @@ input{
     display: none;
 }
 
+input:checked + label{
+    background-color: #243763;
+}
+
 #seleccionar-ataque{
     display: flex;
     flex-direction: column;
@@ -76,15 +81,16 @@ input{
 }
 
 .botones-ataques{
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: space-around;
-    margin: 30px 0;
+    margin: 5px 0;
 }
 
 .botones-ataques button{
     height: 60px;
     width: 160px;
+    margin-block: 10px;
     font-size: 20px;
     background: white;
 
@@ -98,7 +104,6 @@ input{
     width: 280px;
     background: #FFEBB7;
     padding: 20px;
-    margin-top: 20px;
     border-radius: 20px;
 }
 
@@ -112,7 +117,6 @@ span:first-child{
     width: 70%;
     display: flex;
     justify-content: space-around;
-    overflow-y: auto;
 }
 
 .combate{
@@ -120,7 +124,7 @@ span:first-child{
     flex-direction: column;
     align-items: center;
 
-    height: auto;
+    height: max-content;
     width: 250px;
     padding: 10px;
     border: 2px solid red;
@@ -145,4 +149,19 @@ button{
 }
 button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+@media (max-width: 360px){
+    .tarjetas{
+        flex-direction: column;
+    }
+    .botones-ataques{
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .botones-ataques button{
+        height: 40px;
+    }
+
 }
