@@ -1,8 +1,3 @@
-let ataqueJugador
-let ataqueEnemigo
-let vidasJugador = 3
-let vidasEnemigo = 3
-
 const sectionReiniciar = document.getElementById('reiniciar')
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const botonMascotaJugador = document.getElementById('boton-mascota')
@@ -19,6 +14,38 @@ const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const sectionMensaje = document.getElementById('resultado')
 
+let ataqueJugador
+let ataqueEnemigo
+let vidasJugador = 3
+let vidasEnemigo = 3
+
+class Mokepon {
+    
+    constructor(nombre, foto, vida) {
+        this.nombre = nombre
+        this.foto = foto
+        this.vida = vida
+
+    }
+
+    get name(){
+        return this.nombre
+    }
+
+    set lifes(value){
+        this.vida = this.vida - value
+        return this.vida;
+    }
+
+}
+
+let hipodoge = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png" alt="Hipodoge', 5)
+
+let capipepo = new Mokepon('Capipepo', './assets/mokepons_mokepon_capipepo_attack.png', 5)
+
+let ratigueya = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 5)
+
+console.log(hipodoge, hipodoge.name)
 
 function iniciarJuego() {
     sectionReiniciar.style.display = 'none'
