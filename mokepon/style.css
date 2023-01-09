@@ -89,7 +89,7 @@ input:checked + label{
 
 .botones-ataques button{
     height: 60px;
-    width: 160px;
+    width: 80px;
     margin-block: 10px;
     font-size: 20px;
     background: white;
@@ -145,7 +145,7 @@ button{
     border-color: transparent;
     cursor: pointer;
     outline: 8px ridge rgba(33, 107, 226, 0.56);
-    border-radius: 20px;
+    border-radius: 80px;
 }
 button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
