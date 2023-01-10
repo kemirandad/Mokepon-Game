@@ -15,13 +15,14 @@ const contenedorDeTarjetas = document.getElementById('contenedor-tarjetas')
 let mokepones = []
 let opcionDeMokepones 
 let opcionDeAtaques
-let ataqueJugador
-let ataqueEnemigo
 let mascotaJugador
 let mascotaEnemigo
 
 let botones = []
-let listaAtaquesJugador = []
+let ataqueJugador = []
+let ataqueEnemigo = []
+let ataquesMokeponJugador 
+let ataquesMokeponEnemigo
 let botonAgua
 let botonTierra
 let botonFuego
@@ -129,22 +130,21 @@ function secuenciaAtaque() {
     botones.forEach((boton) => { 
         boton.addEventListener('click', (e) => {
             if (e.target.innerText === '🔥') {
-                listaAtaquesJugador.push('FUEGO')
-                console.log(listaAtaquesJugador);
+                ataqueJugador.push('FUEGO')
+                console.log(ataqueJugador);
                 boton.style.background = '#112f58'
             } else if (e.target.innerText === '💧') {
-                listaAtaquesJugador.push('AGUA')
-                console.log(listaAtaquesJugador);
+                ataqueJugador.push('AGUA')
+                console.log(ataqueJugador);
                 boton.style.background = '#112f58'
             } else {
-                listaAtaquesJugador.push('TIERRA')
-                console.log(listaAtaquesJugador);
+                ataqueJugador.push('TIERRA')
+                console.log(ataqueJugador);
                 boton.style.background = '#112f58'
             }
+            ataqueAleatorioEnemigo()
         })
     })
-
-    ataqueAleatorioEnemigo()
 }
 
 function seleccionarMascotaJugador() {    
@@ -181,23 +181,27 @@ function seleccionarMascotaJugador() {
 
 function seleccionarMascotaEnemigo() {
     let indiceMascotaAleatoria = aleatorio(0, mokepones.length-1)
+    
     spanMascotaEnemigo.innerHTML = mokepones[indiceMascotaAleatoria].name
     mascotaEnemigo = mokepones[indiceMascotaAleatoria].name
-
+    ataquesMokeponEnemigo = mokepones[indiceMascotaAleatoria].ataques
+    
     secuenciaAtaque()
 }
 
 
 function ataqueAleatorioEnemigo() {
-    let ataqueAleatorio = aleatorio(1, 3)
+    let ataqueAleatorio = aleatorio(0, ataquesMokeponEnemigo.length - 1)
 
-    if (ataqueAleatorio == 1) {
-        ataqueEnemigo = 'FUEGO'
-    } else if (ataqueAleatorio == 2) {
-        ataqueEnemigo = 'AGUA'
+    if (ataqueAleatorio == 0 ||  ataqueAleatorio == 1) {
+        ataqueEnemigo.push('FUEGO')
+    } else if (ataqueAleatorio == 2 || ataqueAleatorio == 4) {
+        ataqueEnemigo.push('AGUA')
     } else {
-        ataqueEnemigo = 'TIERRA'
+        ataqueEnemigo.push('TIERRA')
     }
+    console.log(ataqueEnemigo);
+    combate()
 }
 
 function combate() {
