@@ -107,10 +107,23 @@ input:checked + label{
     border-radius: 20px;
 }
 
-span:first-child{
+.vidas {
+    text-align: center;
+    margin-bottom: 10px;
+    width: 75%;
     font-family: 'Fredoka', sans-serif;
     color: aliceblue;
     font-size: 50px;
+    border-block: 2px solid red;
+}
+
+.img-mascotas {
+    width: 8rem;
+    border: 2px solid red;
+    border-radius: 80px;
+    background: wheat;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .mensajes-batalla{
