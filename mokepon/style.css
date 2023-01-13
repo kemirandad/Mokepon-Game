@@ -35,14 +35,14 @@ body{
     justify-content: center;
     align-items: center;
 
-    width: 180px;
+    width: 190px;
     height: 100px;
     background-color: #FED049;
     color: white;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 20px;
-    margin: 10px;
+    margin: 5px;
 
 }
 
@@ -52,7 +52,7 @@ body{
 
 .tarjetas{
     display: flex;
-    gap: 10px;
+    gap: 5px;
 }
 
 #boton-mascota{
@@ -89,7 +89,7 @@ input:checked + label{
 
 .botones-ataques button{
     height: 60px;
-    width: 80px;
+    width: 4rem;
     margin-block: 10px;
     font-size: 20px;
     background: white;
@@ -113,12 +113,12 @@ input:checked + label{
     width: 75%;
     font-family: 'Fredoka', sans-serif;
     color: aliceblue;
-    font-size: 50px;
+    font-size: 30px;
     border-block: 2px solid red;
 }
 
 .img-mascotas {
-    width: 8rem;
+    width: 7rem;
     border: 2px solid red;
     border-radius: 80px;
     background: wheat;
