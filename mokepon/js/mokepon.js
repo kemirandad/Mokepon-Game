@@ -12,6 +12,9 @@ const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const sectionMensaje = document.getElementById('resultado')
 const contenedorDeTarjetas = document.getElementById('contenedor-tarjetas')
 
+const sectionVerMapa = document.getElementById('ver-mapa')
+const mapa = document.getElementById('mapa')
+
 let mokepones = []
 let opcionDeMokepones 
 let opcionDeAtaques
@@ -32,6 +35,9 @@ let nombreMascotaJugador
 let nombreMascotaEnemigo
 let mascotaJugador
 let mascotaEnemigo
+
+//canva
+let lienzo = mapa.getContext('2d')
 
 class Mokepon {
     
@@ -116,6 +122,7 @@ mokepones.push(hipodoge, capipepo, ratigueya, tucapalma, pydos, langostelvis)
 function iniciarJuego() {
     sectionReiniciar.style.display = 'none'
     sectionSeleccionarAtaque.style.display = 'none'
+    sectionVerMapa.style.display = 'none'
 
     mokepones.forEach((mokepon) => {
         opcionDeMokepones = `
@@ -151,7 +158,6 @@ function mostrarBotonesDeAtaques(mascota) {
 }
 
 function secuenciaAtaque() {
-    console.log(ataqueJugador.length);
     botones.forEach((boton) => {
         boton.addEventListener('click', (e) => {
             if (e.target.innerText === '🔥') {
@@ -209,7 +215,21 @@ function seleccionarMascotaEnemigo() {
     mostrarBotonesDeAtaques(mascotaJugador)
 
     sectionSeleccionarMascotaJugador.style.display = 'none'
-    sectionSeleccionarAtaque.style.display = 'flex'
+    //sectionSeleccionarAtaque.style.display = 'flex'
+    
+    //Lienzo del canvas
+    sectionVerMapa.style.display = 'flex'
+
+    let imagenDeCapipepo = new Image()
+    imagenDeCapipepo.src = capipepo.foto
+
+    lienzo.drawImage(
+        imagenDeCapipepo,
+        20,
+        40,
+        100,
+        100
+    )
 
     secuenciaAtaque()
 }
@@ -232,13 +252,11 @@ function agregarAtaque() {
 
 function ataqueAleatorioEnemigo() {
     let indexAleatorio = aleatorio(0, ataquesMokeponEnemigo.length - 1)
-    let ataques = ataquesMokeponEnemigo
     
-    let ataqueAleatorio = ataques[indexAleatorio]
+    let ataqueAleatorio = ataquesMokeponEnemigo[indexAleatorio]
     
     ataqueEnemigo.push(ataqueAleatorio.tipo)
-    ataques.filter(item => item == ataqueAleatorio)
-    console.log(ataques);
+    ataquesMokeponEnemigo = ataquesMokeponEnemigo.filter(item => item != ataqueAleatorio)
     combate()
 }
 
