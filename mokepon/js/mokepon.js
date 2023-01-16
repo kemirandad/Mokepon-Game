@@ -46,6 +46,12 @@ class Mokepon {
         this.foto = foto
         this.tipo = tipo
         this.ataques = []
+        this.x = 20
+        this.y = 30
+        this.ancho = 80
+        this.alto = 80
+        this.mapaFoto = new Image()
+        this.mapaFoto.src = foto
     }
 
     get name(){
@@ -219,18 +225,7 @@ function seleccionarMascotaEnemigo() {
     
     //Lienzo del canvas
     sectionVerMapa.style.display = 'flex'
-
-    let imagenDeCapipepo = new Image()
-    imagenDeCapipepo.src = capipepo.foto
-
-    lienzo.drawImage(
-        imagenDeCapipepo,
-        20,
-        40,
-        100,
-        100
-    )
-
+    moverCapipepo()
     secuenciaAtaque()
 }
 
@@ -364,6 +359,38 @@ function reiniciarJuego() {
 
 function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function pintarPersonaje() {
+    lienzo.clearRect(0,0, mapa.width, mapa.height)
+    lienzo.drawImage(
+        capipepo.mapaFoto,
+        capipepo.x,
+        capipepo.y,
+        capipepo.ancho,
+        capipepo.alto
+    )
+}
+
+function moverCapipepo() {
+    let botonesMovimiento = document.querySelectorAll('.BMovimiento')
+    botonesMovimiento.forEach(boton => {
+        boton.addEventListener('click', (e) => {
+            if (e.target.innerText == 'Right') {
+                capipepo.x = capipepo.x + 5
+                pintarPersonaje()
+            } else if (e.target.innerText == 'Left') {
+                capipepo.x = capipepo.x - 5
+                pintarPersonaje()
+            } else if (e.target.innerText == 'Down') {
+                capipepo.y = capipepo.y + 5
+                pintarPersonaje()
+            } else if (e.target.innerText == 'Up') {
+                capipepo.y = capipepo.y - 5
+                pintarPersonaje()
+            }
+        })
+    })
 }
 
 window.addEventListener('load', iniciarJuego)
