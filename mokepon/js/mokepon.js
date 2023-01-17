@@ -38,7 +38,9 @@ let mascotaEnemigo
 
 //canva
 let lienzo = mapa.getContext('2d')
-let intervalo 
+let intervalo
+let mapaBackground = new Image()
+mapaBackground.src = './assets/mokemap.png' 
 
 class Mokepon {
     
@@ -365,39 +367,49 @@ function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-function pintarPersonaje() {
-    capipepo.x = capipepo.x + capipepo.velocidadX
-    capipepo.y = capipepo.y + capipepo.velocidadY
+function pintarCanvas() {
+
+
+
+    mascotaJugador.x = mascotaJugador.x + mascotaJugador.velocidadX
+    mascotaJugador.y = mascotaJugador.y + mascotaJugador.velocidadY
 
     lienzo.clearRect(0,0, mapa.width, mapa.height)
     lienzo.drawImage(
-        capipepo.mapaFoto,
-        capipepo.x,
-        capipepo.y,
-        capipepo.ancho,
-        capipepo.alto
+        mapaBackground,
+        0,
+        0,
+        mapa.width,
+        mapa.height
+    )
+    lienzo.drawImage(
+        mascotaJugador.mapaFoto,
+        mascotaJugador.x,
+        mascotaJugador.y,
+        mascotaJugador.ancho,
+        mascotaJugador.alto
     )
 }
 
 function moverHaciaDerecha() {
-    capipepo.velocidadX = 5
+    mascotaJugador.velocidadX = 5
 }
 
 function moverHaciaIzquierda() {
-    capipepo.velocidadX = -5
+    mascotaJugador.velocidadX = -5
 }
 
 function moverHaciaAbajo() {
-    capipepo.velocidadY = 5
+    mascotaJugador.velocidadY = 5
 }
 
 function moverHaciaArriba() {
-    capipepo.velocidadY = -5
+    mascotaJugador.velocidadY = -5
 }
 
 function detenerMovimiento() {
-    capipepo.velocidadX = 0
-    capipepo.velocidadY = 0
+    mascotaJugador.velocidadX = 0
+    mascotaJugador.velocidadY = 0
 }
 
 function sePresionoUnaTecla(event) {
@@ -421,7 +433,10 @@ function sePresionoUnaTecla(event) {
 }
 
 function iniciarMapa() {
-    intervalo = setInterval(pintarPersonaje, 50)
+    mapa.width = 320
+    mapa.height = 240
+
+    intervalo = setInterval(pintarCanvas, 50)
 
     window.addEventListener('keydown', sePresionoUnaTecla)
     window.addEventListener('keyup', detenerMovimiento)
