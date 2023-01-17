@@ -38,6 +38,7 @@ let mascotaEnemigo
 
 //canva
 let lienzo = mapa.getContext('2d')
+let intervalo 
 
 class Mokepon {
     
@@ -52,6 +53,8 @@ class Mokepon {
         this.alto = 80
         this.mapaFoto = new Image()
         this.mapaFoto.src = foto
+        this.velocidadX = 0
+        this.velocidadY = 0
     }
 
     get name(){
@@ -225,8 +228,9 @@ function seleccionarMascotaEnemigo() {
     
     //Lienzo del canvas
     sectionVerMapa.style.display = 'flex'
-    moverCapipepo()
-    secuenciaAtaque()
+    intervalo = setInterval(pintarPersonaje, 50)
+
+    //secuenciaAtaque()
 }
 
 function agregarAtaque() {
@@ -362,6 +366,9 @@ function aleatorio(min, max) {
 }
 
 function pintarPersonaje() {
+    capipepo.x = capipepo.x + capipepo.velocidadX
+    capipepo.y = capipepo.y + capipepo.velocidadY
+
     lienzo.clearRect(0,0, mapa.width, mapa.height)
     lienzo.drawImage(
         capipepo.mapaFoto,
@@ -372,25 +379,25 @@ function pintarPersonaje() {
     )
 }
 
-function moverCapipepo() {
-    let botonesMovimiento = document.querySelectorAll('.BMovimiento')
-    botonesMovimiento.forEach(boton => {
-        boton.addEventListener('click', (e) => {
-            if (e.target.innerText == 'Right') {
-                capipepo.x = capipepo.x + 5
-                pintarPersonaje()
-            } else if (e.target.innerText == 'Left') {
-                capipepo.x = capipepo.x - 5
-                pintarPersonaje()
-            } else if (e.target.innerText == 'Down') {
-                capipepo.y = capipepo.y + 5
-                pintarPersonaje()
-            } else if (e.target.innerText == 'Up') {
-                capipepo.y = capipepo.y - 5
-                pintarPersonaje()
-            }
-        })
-    })
+function moverHaciaDerecha() {
+    capipepo.velocidadX = 5
+}
+
+function moverHaciaIzquierda() {
+    capipepo.velocidadX = -5
+}
+
+function moverHaciaAbajo() {
+    capipepo.velocidadY = 5
+}
+
+function moverHaciaArriba() {
+    capipepo.velocidadY = -5
+}
+
+function detenerMovimiento() {
+    capipepo.velocidadX = 0
+    capipepo.velocidadY = 0
 }
 
 window.addEventListener('load', iniciarJuego)

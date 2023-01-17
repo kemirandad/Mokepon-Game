@@ -187,5 +187,12 @@ button:hover {
     .botones-ataques button{
         height: 40px;
     }
+    #contenedor-botones-movimiento {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
 
 }
