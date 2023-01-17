@@ -225,12 +225,12 @@ function seleccionarMascotaEnemigo() {
 
     sectionSeleccionarMascotaJugador.style.display = 'none'
     //sectionSeleccionarAtaque.style.display = 'flex'
+    sectionVerMapa.style.display = 'flex'
     
     //Lienzo del canvas
-    sectionVerMapa.style.display = 'flex'
-    intervalo = setInterval(pintarPersonaje, 50)
+    iniciarMapa()
 
-    //secuenciaAtaque()
+    secuenciaAtaque()
 }
 
 function agregarAtaque() {
@@ -398,6 +398,33 @@ function moverHaciaArriba() {
 function detenerMovimiento() {
     capipepo.velocidadX = 0
     capipepo.velocidadY = 0
+}
+
+function sePresionoUnaTecla(event) {
+    switch (event.key) {
+        case 'ArrowUp':
+            moverHaciaArriba()
+            break;
+        case 'ArrowDown':
+            moverHaciaAbajo()
+            break;
+        case 'ArrowRight':
+            moverHaciaDerecha()
+            break;
+        case 'ArrowLeft':
+            moverHaciaIzquierda()
+            break;
+        default:
+            //detenerMovimiento()
+            break;
+    }
+}
+
+function iniciarMapa() {
+    intervalo = setInterval(pintarPersonaje, 50)
+
+    window.addEventListener('keydown', sePresionoUnaTecla)
+    window.addEventListener('keyup', detenerMovimiento)
 }
 
 window.addEventListener('load', iniciarJuego)
