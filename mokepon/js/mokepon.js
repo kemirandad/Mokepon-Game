@@ -16,6 +16,7 @@ const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
 
 let mokepones = []
+let mokeponesEnemigos = []
 let opcionDeMokepones 
 let opcionDeAtaques
 
@@ -144,6 +145,7 @@ langostelvis.ataques.push(
     {nombre: '🌱', id: 'boton-tierra', tipo:'TIERRA'},
 )
 
+mokeponesEnemigos.push(hipodogeEnemigo, capipepoEnemigo, ratigueyaEnemigo)
 mokepones.push(hipodoge, capipepo, ratigueya, tucapalma, pydos, langostelvis)
 
 function iniciarJuego() {
@@ -246,7 +248,6 @@ function seleccionarMascotaEnemigo() {
     ataquesMokeponEnemigo = mokepones[indiceMascotaAleatoria].ataques
     
     agregarAtaque()
->>>>>>> 7d94f6b25f44c420f3868fbf464ea6aad322bb89
 
     mostrarBotonesDeAtaques(mascotaJugador)
 
@@ -393,13 +394,10 @@ function aleatorio(min, max) {
 }
 
 function pintarCanvas() {
-
-
-
     mascotaJugador.x = mascotaJugador.x + mascotaJugador.velocidadX
     mascotaJugador.y = mascotaJugador.y + mascotaJugador.velocidadY
 
-    lienzo.clearRect(0,0, mapa.width, mapa.height)
+    lienzo.clearRect(0, 0, mapa.width, mapa.height)
     lienzo.drawImage(
         mapaBackground,
         0,
@@ -408,7 +406,16 @@ function pintarCanvas() {
         mapa.height
     )
     mascotaJugador.pintarMokepon()
-    mascotaEnemigo.pintarMokepon()
+
+    mokeponesEnemigos.forEach((mokeponEnemigo) => {
+        mokeponEnemigo.pintarMokepon()
+
+        if (mascotaJugador.velocidadX !== 0 || mascotaJugador.velocidadY !== 0) {
+            revisarColision(mokeponEnemigo, mascotaJugador, mokeponEnemigo.nombre)
+        }
+    })
+
+
 }
 
 function moverHaciaDerecha() {
@@ -460,6 +467,31 @@ function iniciarMapa() {
 
     window.addEventListener('keydown', sePresionoUnaTecla)
     window.addEventListener('keyup', detenerMovimiento)
+}
+
+function revisarColision(enemigo, mascota, nombreMascotaColisionada) {
+
+    const arribaEnemigo = enemigo.y
+    const abajoEnemigo = enemigo.y + enemigo.alto
+    const derechaEnemigo = enemigo.x + enemigo.ancho
+    const izquierdaEnemigo = enemigo.x 
+
+
+    const arribaMascota = mascota.y
+    const abajoMascota = mascota.y + mascota.alto
+    const derechaMascota = mascota.x + mascota.ancho
+    const izquierdaMascota = mascota.x 
+
+    if (
+        abajoMascota < arribaEnemigo ||
+        arribaMascota > abajoEnemigo ||
+        derechaMascota < izquierdaEnemigo ||
+        izquierdaMascota > derechaEnemigo
+    ) {
+        return
+    }
+    detenerMovimiento()
+    alert("Hay colision con " + nombreMascotaColisionada)
 }
 
 window.addEventListener('load', iniciarJuego)
