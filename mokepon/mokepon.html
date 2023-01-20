@@ -26,13 +26,16 @@
     </section>
 
     <section id="ver-mapa">
-        <h1 class="titulo">Recorre el mapa con tu mokepon</h1>
+        <h2 class="subtitulo">Recorre el mapa con tu mokepon</h2>
         <canvas id="mapa"></canvas>
+        
+        <button onmousedown="moverHaciaArriba()" onmouseup="detenerMovimiento()" class="botones-movimiento BMovimiento">Arriba</button>
+
         <div id="contenedor-botones-movimiento">
-            <button onmousedown="moverHaciaDerecha()" onmouseup="detenerMovimiento()"  class="botones-movimiento BMovimiento">Right</button>
-            <button onmousedown="moverHaciaAbajo()" onmouseup="detenerMovimiento()" class="botones-movimiento BMovimiento">Down</button>
-            <button onmousedown="moverHaciaArriba()" onmouseup="detenerMovimiento()" class="botones-movimiento BMovimiento">Up</button>
-            <button onmousedown="moverHaciaIzquierda()" onmouseup="detenerMovimiento()" class="botones-movimiento BMovimiento">Left</button>
+            <button onmousedown="moverHaciaIzquierda()" onmouseup="detenerMovimiento()" class="botones-movimiento BMovimiento">Izquierda</button>
+            <button onmousedown="moverHaciaAbajo()" onmouseup="detenerMovimiento()" class="botones-movimiento BMovimiento">Abajo</button>
+            <button onmousedown="moverHaciaDerecha()" onmouseup="detenerMovimiento()"  class="botones-movimiento BMovimiento">Derecha</button>
+            
         </div>
         
     </section>
