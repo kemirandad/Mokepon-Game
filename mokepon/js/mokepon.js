@@ -56,6 +56,10 @@ alturaQueBuscamos = anchoDelMapa * 600 / 800
 mapa.width = anchoDelMapa
 mapa.height = alturaQueBuscamos
 
+
+//fetch
+let jugadorId = null
+
 class Mokepon {
     
     constructor(nombre, foto, tipo, fotoMapa) {
@@ -116,93 +120,47 @@ let pydos = new Mokepon('Pydos', './assets/mokepons_mokepon_pydos_attack.png', '
 
 let langostelvis = new Mokepon('Langostelvis', './assets/mokepons_mokepon_langostelvis_attack.png', 'fuego', './assets/langostelvis.png')
 
-hipodoge.ataques.push(
+const TIPO_AGUA_ATAQUES = [
     {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
     {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
     {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
     {nombre: '🔥', id: 'boton-fuego', tipo: 'FUEGO'},
     {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
-)
+]
 
-hipodogeEnemigo.ataques.push(
-    {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
-    {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
-    {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
-    {nombre: '🔥', id: 'boton-fuego', tipo: 'FUEGO'},
-    {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
-)
-
-capipepo.ataques.push(
+const TIPO_TIERRA_ATAQUES = [
     {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
     {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
     {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
     {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
     {nombre: '🔥', id: 'boton-fuego', tipo: 'FUEGO'},
-)
+]
 
-capipepoEnemigo.ataques.push(
-    {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
-    {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
-    {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
-    {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
-    {nombre: '🔥', id: 'boton-fuego', tipo: 'FUEGO'},
-)
-
-ratigueya.ataques.push(
+const TIPO_FUEGO_ATAQUES = [
     {nombre: '🔥', id: 'boton-fuego', tipo:'FUEGO'},
     {nombre: '🔥', id: 'boton-fuego', tipo:'FUEGO'},
     {nombre: '🔥', id: 'boton-fuego', tipo:'FUEGO'},
     {nombre: '💧', id: 'boton-agua', tipo:'AGUA'},
     {nombre: '🌱', id: 'boton-tierra', tipo:'TIERRA'},
-)
+]
 
-ratigueyaEnemigo.ataques.push(
-    {nombre: '🔥', id: 'boton-fuego', tipo:'FUEGO'},
-    {nombre: '🔥', id: 'boton-fuego', tipo:'FUEGO'},
-    {nombre: '🔥', id: 'boton-fuego', tipo:'FUEGO'},
-    {nombre: '💧', id: 'boton-agua', tipo:'AGUA'},
-    {nombre: '🌱', id: 'boton-tierra', tipo:'TIERRA'},
-)
+hipodoge.ataques.push(...TIPO_AGUA_ATAQUES)
 
-pydos.ataques.push(
-    {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
-    {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
-    {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
-    {nombre: '🔥', id: 'boton-fuego', tipo: 'FUEGO'},
-    {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
-)
+capipepo.ataques.push(...TIPO_TIERRA_ATAQUES)
 
-pydosEnemigo.ataques.push(
-    {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
-    {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
-    {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
-    {nombre: '🔥', id: 'boton-fuego', tipo: 'FUEGO'},
-    {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
-)
+ratigueya.ataques.push(...TIPO_FUEGO_ATAQUES)
 
-tucapalma.ataques.push(
-    {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
-    {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
-    {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
-    {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
-    {nombre: '🔥', id: 'boton-fuego', tipo: 'FUEGO'},
-)
+pydos.ataques.push(...TIPO_AGUA_ATAQUES)
 
-tucapalmaEnemigo.ataques.push(
-    {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
-    {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
-    {nombre: '🌱', id: 'boton-tierra', tipo: 'TIERRA'},
-    {nombre: '💧', id: 'boton-agua', tipo: 'AGUA'},
-    {nombre: '🔥', id: 'boton-fuego', tipo: 'FUEGO'},
-)
+tucapalma.ataques.push(...TIPO_TIERRA_ATAQUES)
 
-langostelvis.ataques.push(
-    {nombre: '🔥', id: 'boton-fuego', tipo:'FUEGO'},
-    {nombre: '🔥', id: 'boton-fuego', tipo:'FUEGO'},
-    {nombre: '🔥', id: 'boton-fuego', tipo:'FUEGO'},
-    {nombre: '💧', id: 'boton-agua', tipo:'AGUA'},
-    {nombre: '🌱', id: 'boton-tierra', tipo:'TIERRA'},
-)
+langostelvis.ataques.push(...TIPO_FUEGO_ATAQUES)
+
+hipodogeEnemigo.ataques.push(...TIPO_AGUA_ATAQUES)
+
+capipepoEnemigo.ataques.push(...TIPO_TIERRA_ATAQUES)
+
+ratigueya.ataques.push(...TIPO_FUEGO_ATAQUES)
 
 langostelvisEnemigo.ataques.push(
     {nombre: '🔥', id: 'boton-fuego', tipo:'FUEGO'},
@@ -234,6 +192,21 @@ function iniciarJuego() {
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
     botonReiniciar.addEventListener('click', reiniciarJuego)
     
+    //Express
+    unirseAlJuego()
+}
+
+function unirseAlJuego() {
+    fetch("http://localhost:8080/unirse")
+        .then((res) => {
+            if (res.ok) {
+                res.text()
+                    .then((respuesta) => {
+                        console.log(respuesta);
+                        jugadorId = respuesta
+                    })
+            }
+        })
 }
 
 function estaSeleccionadaMascota(nombreMascota) {
@@ -302,21 +275,42 @@ function seleccionarMascotaJugador() {
 
         }
     })
+
+    seleccionarMokepon(mascotaJugador)
+
 }
 
-function seleccionarMascotaEnemigo(mascota) {
+function seleccionarMokepon() {
+    fetch(`http://localhost:8080/mokepon/${jugadorId}`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            mokepon: nombreMascotaJugador
+        })
+    })
+}
+
+function seleccionarMascotaEnemigo() {
+    let indiceMascotaAleatoria = aleatorio(0, mokeponesEnemigos.length-1)
     
     spanMascotaEnemigo.innerHTML = `
-    <img class="img-mascotas" src=${mascota.foto}>
+    <img class="img-mascotas" src=${mokeponesEnemigos[indiceMascotaAleatoria].foto}>
     `
-    mascotaEnemigo = mascota
-    nombreMascotaEnemigo = mascota.name
-    ataquesMokeponEnemigo = mascota.ataques
-    console.log("ojo se ejecuto esta funcion");
+    mascotaEnemigo = mokeponesEnemigos[indiceMascotaAleatoria]
+    nombreMascotaEnemigo = mokeponesEnemigos[indiceMascotaAleatoria].name
+    ataquesMokeponEnemigo = mokeponesEnemigos[indiceMascotaAleatoria].ataques
+    
+    agregarAtaque()
 
    agregarAtaque()
 
-    mostrarBotonesDeAtaques(mascotaJugador)
+    sectionSeleccionarMascotaJugador.style.display = 'none'
+    sectionVerMapa.style.display = 'flex'
+    
+    //Lienzo del canvas
+    iniciarMapa()
 
     secuenciaAtaque()
 }
@@ -467,6 +461,8 @@ function pintarCanvas() {
     )
     mascotaJugador.pintarMokepon()
 
+    enviarPosicion(mascotaJugador.x, mascotaJugador.y)
+
     mokeponesEnemigos.forEach((mokeponEnemigo) => {
         mokeponEnemigo.pintarMokepon()
 
@@ -475,8 +471,27 @@ function pintarCanvas() {
 
         }
     })
+}
 
-
+function enviarPosicion(x, y) {
+    fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            x,
+            y
+        })
+    })
+    .then(function(res) {
+        if (res.ok) {
+            res.json()
+                .then(function ({enemigos}){
+                    console.log(enemigos);
+                })
+        }
+    })
 }
 
 function moverHaciaDerecha() {
