@@ -475,7 +475,7 @@ function enviarPosicion(x, y) {
                 res.json()
                     .then(function ({ enemigos }) {
                         console.log(enemigos);
-                        enemigos.forEach((enemigo) => {
+                        mokeponesEnemigos = enemigos.map((enemigo) => {
                             let mokepEnemigo = null
                             const mokeponNombre = enemigo.mokepon.nombre || ""
                             if (mokeponNombre === "Hipodoge") {
@@ -490,7 +490,7 @@ function enviarPosicion(x, y) {
                             mokepEnemigo.x = enemigo.x
                             mokepEnemigo.y = enemigo.y
 
-                            mokepEnemigo.pintarMokepon()
+                            return mokepEnemigo
                         })
                     })
             }
