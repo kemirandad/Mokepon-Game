@@ -256,6 +256,23 @@ function enviarAtaques() {
             ataques: ataqueJugador
         })
     })
+
+    intervalo = setInterval(obtenerAtaques, 50)
+}
+
+function obtenerAtaques() {
+    fetch(`http://localhost:5500/mokepon/${enemigoId}/ataques`)
+        .then(function (res) {
+            if (res.ok) {
+                res.json()
+                    .then(function({ataques}){
+                        if(ataques.length === 5) {
+                            ataqueEnemigo = ataques
+                            combate()
+                        }
+                    })
+            }
+        })
 }
 
 
@@ -340,12 +357,13 @@ function ataqueAleatorioEnemigo() {
     
     ataqueEnemigo.push(ataqueAleatorio.tipo)
     ataquesMokeponEnemigo = ataquesMokeponEnemigo.filter(item => item != ataqueAleatorio)
-
     
     combate()
 }
 
 function combate() {
+
+    clearInterval(intervalo)
 
     let elementoJugador = ataqueJugador.at(-1)
     let elementoEnemigo = ataqueEnemigo.at(-1)
@@ -471,10 +489,6 @@ function pintarCanvas() {
         mokeponEnemigo.pintarMokepon()
 
         revisarColision(mokeponEnemigo, mascotaJugador, mokeponEnemigo.nombre)
-        // if (mascotaJugador.velocidadX !== 0 || mascotaJugador.velocidadY !== 0) {
-        //     revisarColision(mokeponEnemigo, mascotaJugador, mokeponEnemigo.nombre)
-
-        // }
     })
 }
 
