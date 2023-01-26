@@ -62,8 +62,9 @@ let jugadorId = null
 
 class Mokepon {
     
-    constructor(nombre, foto, tipo, fotoMapa) {
+    constructor(nombre, foto, tipo, fotoMapa, id=null) {
         this.nombre = nombre
+        this.id = id
         this.foto = foto
         this.tipo = tipo
         this.ataques = []
@@ -102,17 +103,17 @@ let capipepo = new Mokepon('Capipepo', './assets/mokepons_mokepon_capipepo_attac
 
 let ratigueya = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 'fuego', './assets/ratigueya.png')
 
-let hipodogeEnemigo = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 'agua', './assets/hipodoge.png')
+// let hipodogeEnemigo = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 'agua', './assets/hipodoge.png')
 
-let capipepoEnemigo = new Mokepon('Capipepo', './assets/mokepons_mokepon_capipepo_attack.png', 'tierra', './assets/capipepo.png')
+// let capipepoEnemigo = new Mokepon('Capipepo', './assets/mokepons_mokepon_capipepo_attack.png', 'tierra', './assets/capipepo.png')
 
-let ratigueyaEnemigo = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 'fuego', './assets/ratigueya.png')
+// let ratigueyaEnemigo = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 'fuego', './assets/ratigueya.png')
 
-let tucapalmaEnemigo = new Mokepon('Tucapalma', './assets/mokepons_mokepon_tucapalma_attack.png', 'tierra', './assets/tucapalma.png')
+// let tucapalmaEnemigo = new Mokepon('Tucapalma', './assets/mokepons_mokepon_tucapalma_attack.png', 'tierra', './assets/tucapalma.png')
 
-let pydosEnemigo = new Mokepon('Tucapalma', './assets/mokepons_mokepon_pydos_attack.png', 'agua', './assets/pydos.png')
+// let pydosEnemigo = new Mokepon('Tucapalma', './assets/mokepons_mokepon_pydos_attack.png', 'agua', './assets/pydos.png')
 
-let langostelvisEnemigo = new Mokepon('Tucapalma', './assets/mokepons_mokepon_langostelvis_attack.png', 'fuego', './assets/langostelvis.png')
+// let langostelvisEnemigo = new Mokepon('Tucapalma', './assets/mokepons_mokepon_langostelvis_attack.png', 'fuego', './assets/langostelvis.png')
 
 let tucapalma = new Mokepon('Tucapalma', './assets/mokepons_mokepon_tucapalma_attack.png', 'tierra', './assets/tucapalma.png')
 
@@ -156,21 +157,11 @@ tucapalma.ataques.push(...TIPO_TIERRA_ATAQUES)
 
 langostelvis.ataques.push(...TIPO_FUEGO_ATAQUES)
 
-hipodogeEnemigo.ataques.push(...TIPO_AGUA_ATAQUES)
+// hipodogeEnemigo.ataques.push(...TIPO_AGUA_ATAQUES)
 
-capipepoEnemigo.ataques.push(...TIPO_TIERRA_ATAQUES)
+// capipepoEnemigo.ataques.push(...TIPO_TIERRA_ATAQUES)
 
-ratigueya.ataques.push(...TIPO_FUEGO_ATAQUES)
-
-langostelvisEnemigo.ataques.push(
-    {nombre: '🔥', id: 'boton-fuego', tipo:'FUEGO'},
-    {nombre: '🔥', id: 'boton-fuego', tipo:'FUEGO'},
-    {nombre: '🔥', id: 'boton-fuego', tipo:'FUEGO'},
-    {nombre: '💧', id: 'boton-agua', tipo:'AGUA'},
-    {nombre: '🌱', id: 'boton-tierra', tipo:'TIERRA'},
-)
-
-mokeponesEnemigos.push(hipodogeEnemigo, capipepoEnemigo, ratigueyaEnemigo, tucapalmaEnemigo, pydosEnemigo, langostelvisEnemigo)
+//mokeponesEnemigos.push(hipodogeEnemigo, capipepoEnemigo, ratigueyaEnemigo, tucapalmaEnemigo, pydosEnemigo, langostelvisEnemigo)
 mokepones.push(hipodoge, capipepo, ratigueya, tucapalma, pydos, langostelvis)
 
 function iniciarJuego() {
@@ -197,7 +188,7 @@ function iniciarJuego() {
 }
 
 function unirseAlJuego() {
-    fetch("http://localhost:8080/unirse")
+    fetch("http://localhost:5500/unirse")
         .then((res) => {
             if (res.ok) {
                 res.text()
@@ -263,6 +254,7 @@ function seleccionarMascotaJugador() {
         <img class="img-mascotas" src=${mokepon.foto}>
         `
             nombreMascotaJugador = mokepon.nombre
+
             mascotaJugador = mokepon
 
             ataquesMokeponJugador = mokepon.ataques
@@ -271,17 +263,18 @@ function seleccionarMascotaJugador() {
 
             sectionVerMapa.style.display = 'flex'
 
-            iniciarMapa()
-
         }
     })
 
     seleccionarMokepon(mascotaJugador)
 
+    //Lienzo del canvas
+    iniciarMapa()
+    secuenciaAtaque()
 }
 
 function seleccionarMokepon() {
-    fetch(`http://localhost:8080/mokepon/${jugadorId}`, {
+    fetch(`http://localhost:5500/mokepon/${jugadorId}`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -304,15 +297,8 @@ function seleccionarMascotaEnemigo() {
     
     agregarAtaque()
 
-   agregarAtaque()
-
     sectionSeleccionarMascotaJugador.style.display = 'none'
     sectionVerMapa.style.display = 'flex'
-    
-    //Lienzo del canvas
-    iniciarMapa()
-
-    secuenciaAtaque()
 }
 
 function agregarAtaque() {
@@ -474,7 +460,7 @@ function pintarCanvas() {
 }
 
 function enviarPosicion(x, y) {
-    fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, {
+    fetch(`http://localhost:5500/mokepon/${jugadorId}/posicion`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -484,13 +470,30 @@ function enviarPosicion(x, y) {
             y
         })
     })
-    .then(function(res) {
-        if (res.ok) {
-            res.json()
-                .then(function ({enemigos}){
-                    console.log(enemigos);
-                })
-        }
+        .then(function (res) {
+            if (res.ok) {
+                res.json()
+                    .then(function ({ enemigos }) {
+                        console.log(enemigos);
+                        enemigos.forEach((enemigo) => {
+                            let mokepEnemigo = null
+                            const mokeponNombre = enemigo.mokepon.nombre || ""
+                            if (mokeponNombre === "Hipodoge") {
+                                mokepEnemigo = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 'agua', './assets/hipodoge.png')
+                            }
+                            else if (mokeponNombre === "Capipepo") {
+                                mokepEnemigo = new Mokepon('Capipepo', './assets/mokepons_mokepon_capipepo_attack.png', 'tierra', './assets/capipepo.png')
+                            }
+                            else if (mokeponNombre === "Ratigueya") {
+                                mokepEnemigo = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 'fuego', './assets/ratigueya.png')
+                            }
+                            mokepEnemigo.x = enemigo.x
+                            mokepEnemigo.y = enemigo.y
+
+                            mokepEnemigo.pintarMokepon()
+                        })
+                    })
+            }
     })
 }
 
@@ -536,8 +539,6 @@ function sePresionoUnaTecla(event) {
 }
 
 function iniciarMapa() {
-    // mapa.width = 320
-    // mapa.height = 240
 
     intervalo = setInterval(pintarCanvas, 50)
 

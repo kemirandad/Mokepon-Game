@@ -32,7 +32,7 @@ class Mokepon {
 }
 
 // Escojemos un puerto por el que el servidor web escuchará
-const port = 8080;
+const port = 5500;
 
 // Página para visualizar el mensaje "¡Hola Express!"
 app.get('/unirse', (req, res) => {
